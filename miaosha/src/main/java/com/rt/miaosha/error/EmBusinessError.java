@@ -9,6 +9,10 @@ public enum EmBusinessError implements CommonError {
     //20000开头为用户信息相关错误定义
     USER_NOT_EXIST(20001,"用户不存在"),
     USER_LOGIN_FAIL(20002,"手机号或密码错误"),
+
+    //30000开头为交易错误信息定义
+    STOCK_NOT_ENOUGH(30001,"库存不足"),
+
     ;
 
     private EmBusinessError(int errCode,String errMsg){
