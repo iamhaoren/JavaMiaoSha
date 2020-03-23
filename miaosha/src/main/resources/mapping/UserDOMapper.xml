@@ -13,6 +13,15 @@
   <sql id="Base_Column_List">
     id, name, gender, age, telephone, register_mode, third_party_id
   </sql>
+
+  <select id="selectByTelephone"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    where telephone = #{telephone,jdbcType=INTEGER}
+  </select>
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -31,7 +40,7 @@
       #{age,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, #{registerMode,jdbcType=VARCHAR}, 
       #{thirdPartyId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.rt.miaosha.dataobject.UserDO">
+  <insert id="insertSelective" parameterType="com.rt.miaosha.dataobject.UserDO" useGeneratedKeys="true" keyProperty="id">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
